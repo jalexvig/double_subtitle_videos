@@ -1,5 +1,4 @@
 import os
-import re
 import subprocess
 import tempfile
 from pathlib import Path
@@ -38,12 +37,12 @@ def download_url(
 
 
 def translate_subtitles(
-    fname: str,
+    subtitles_path: str | Path,
     foreign_language: str,
     native_language: str,
 ) -> WebVTT:
     delimiter = "\n" * 3
-    subtitles = webvtt.read(fname)
+    subtitles = webvtt.read(subtitles_path)
     subtitle_texts = [caption.text.replace("&nbsp;", "") for caption in subtitles]
 
     translated = []
@@ -146,7 +145,7 @@ def _get_all_files(
 def _get_file_with_filetype(
     dir_path: Path,
     filetype: str,
-) -> str:
+) -> Path:
     files = list(dir_path.glob(f"*.{filetype}"))
     assert len(files) == 1
     return files[0]
