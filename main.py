@@ -7,6 +7,7 @@ from typing import Iterable, Dict
 os.environ["translators_default_region"] = "EN"
 
 import translators
+import typer
 import webvtt
 import yt_dlp
 from webvtt import WebVTT
@@ -152,5 +153,4 @@ def _get_file_with_filetype(
 
 
 if __name__ == "__main__":
-    test_url = "https://www.youtube.com/watch?v=KFv8aqRdlqk"
-    watch(test_url, "fr")
+    typer.run(watch)
