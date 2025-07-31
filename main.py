@@ -84,6 +84,7 @@ def _chunk_subtitles(
 
 def watch(
     url: str,
+    save_dir: str,
     foreign_language: str,
     native_language: str = "en",
 ):
@@ -92,11 +93,12 @@ def watch(
 
     Args:
         url: youtube URL to display with two sets of subtitles.
+        save_dir: Location to save video/subtitles.
         foreign_language: Language e.g. "fr"
         native_language: Language for subtitles. Currently must be english i.e. "en"
     """
 
-    vid_dir = _get_all_files(url, foreign_language, native_language)
+    vid_dir = _get_all_files(url, save_dir, foreign_language, native_language)
     _launch_player(vid_dir, foreign_language, native_language)
 
 
@@ -118,13 +120,13 @@ def _launch_player(
 
 def _get_all_files(
     url: str,
+    save_dir: str,
     foreign_language: str,
     native_language: str,
 ) -> Path:
-    curdir = Path(os.getcwd())
     info = _get_url_info(url)
     assert info["language"] == foreign_language
-    video_dir = curdir / "videos" / info["title"]
+    video_dir = Path(save_dir) / info["title"]
     video_dir.mkdir(parents=True, exist_ok=True)
     os.chdir(video_dir)
 
