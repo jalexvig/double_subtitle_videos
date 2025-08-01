@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "double_subtitle_videos"
+version = "0.0.0"
+authors = [
+  { name="Alex Vig" },
+]
+description = "Subtitle videos for language learning"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+Homepage = "https://github.com/jalexvig/double_subtitle_videos"
+Issues = "https://github.com/jalexvig/double_subtitle_videos/issues"
+
+[tool.setuptools.dynamic]
+dependencies = { file = "requirements.txt" }
+
+[tool.setuptools.packages.find]
+include = ["double_subtitle_videos*"]
+exclude = ["docs*", "tests*", "examples*", "videos*"]

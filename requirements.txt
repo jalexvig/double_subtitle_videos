@@ -1,0 +1,4 @@
+translators==6.0.*
+typer==0.16.*
+webvtt-py==0.5.*
+yt-dlp==2025.7.*
